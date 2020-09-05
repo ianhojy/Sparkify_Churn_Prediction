@@ -1,3 +1,5 @@
 sparkify_clean.csv
 sparkify_data.json
-
+.DS_Store
+.ipynb_checkpoints
+*~$*
