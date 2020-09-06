@@ -17348,7 +17348,7 @@ Training time : 0.64 minutes
 <div class="text_cell_render border-box-sizing rendered_html">
 <h5 id="ROC-(Receiver-Operating-Characteristic)">ROC (Receiver Operating Characteristic)<a class="anchor-link" href="#ROC-(Receiver-Operating-Characteristic)">&#182;</a></h5>$$\text{TPR} = \frac{TP}{TP+FN}$$$$\text{FPR} = \frac{FP}{FP+TN}$$<p>ROC is a plot of $TPR$ against $FPR$ for various threshold values. Skillful models are represented by curves that bow up to the top left of the plot. A no skill classifier cannot discriminate between classes and is represented by the diagonal line from bottom left to top right with AUC of 0.5.</p>
 <h5 id="Precision">Precision<a class="anchor-link" href="#Precision">&#182;</a></h5><p>Precision can be understood as answerinf the following question: <strong>What proportion of positive identifications was actually correct?</strong>
-$$\text{Recall} = \frac{TP}{TP+FP}$$</p>
+$$\text{Precision} = \frac{TP}{TP+FP}$$</p>
 <h5 id="Recall">Recall<a class="anchor-link" href="#Recall">&#182;</a></h5><p>Recall can be understood as answering the following questions: <strong>What proportion of actual positives was identified correctly?</strong>
 $$\text{Recall} = \frac{TP}{TP+FN}$$</p>
 <p>Since, precision and recall are naturally in tension, we take a look at the <strong>Precision-Recall curve</strong> to jointly evaluate our model on these two metrics. The reason why we are particularly interested in jointly observing precision and recall is because we have a case of class imbalance here. Given our business objective to identify churn users, we are lessinterested in predicting the non-churn than we are in predicting the churn.</p>
