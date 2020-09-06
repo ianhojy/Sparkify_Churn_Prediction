@@ -36,31 +36,6 @@ Thus, the challenge is to identify these potential churn users before they actua
 
 ### Data Exploration <a id="explore">
 
-#### Schema
- |-- artist: string (nullable = true)
- |-- auth: string (nullable = true)
- |-- firstName: string (nullable = true)
- |-- gender: string (nullable = true)
- |-- itemInSession: long (nullable = true)
- |-- lastName: string (nullable = true)
- |-- length: double (nullable = true)
- |-- level: string (nullable = true)
- |-- location: string (nullable = true)
- |-- method: string (nullable = true)
- |-- page: string (nullable = true)
- |-- registration: long (nullable = true)
- |-- sessionId: long (nullable = true)
- |-- song: string (nullable = true)
- |-- status: long (nullable = true)
- |-- ts: long (nullable = true)
- |-- userAgent: string (nullable = true)
- |-- userId: string (nullable = true)
- |-- churn: boolean (nullable = true)
- |-- date: date (nullable = true)
- |-- year: integer (nullable = true)
- |-- month: integer (nullable = true)
- |-- dayofweek: integer (nullable = true)
-
 ### Feature Engineering <a id="feature">
 
 ### Modelling <a id="model">
@@ -70,19 +45,14 @@ Thus, the challenge is to identify these potential churn users before they actua
 ### Evaluation Metrics <a id="eval">
 
 ##### ROC (Receiver Operating Characteristic)
-$$\text{TPR} = \frac{TP}{TP+FN}$$
 
-$$\text{FPR} = \frac{FP}{FP+TN}$$
-
-ROC is a plot of $TPR$ against $FPR$ for various threshold values. Skillful models are represented by curves that bow up to the top left of the plot. A no skill classifier cannot discriminate between classes and is represented by the diagonal line from bottom left to top right with Area under Curve (AUC) of 0.5.
+ROC is a plot of TPR against FPR for various threshold values. Skillful models are represented by curves that bow up to the top left of the plot. A no skill classifier cannot discriminate between classes and is represented by the diagonal line from bottom left to top right with Area under Curve (AUC) of 0.5.
 
 ##### Precision
 Precision can be understood as answerinf the following question: **What proportion of positive identifications was actually correct?**
-$$\text{Recall} = \frac{TP}{TP+FP}$$
 
 ##### Recall
 Recall can be understood as answering the following questions: **What proportion of actual positives was identified correctly?**
-$$\text{Recall} = \frac{TP}{TP+FN}$$
 
 Since, precision and recall are naturally in tension, we take a look at the **Precision-Recall curve** to jointly evaluate our model on these two metrics. The reason why we are particularly interested in jointly observing precision and recall is because we have a case of class imbalance here. Given our business objective to identify churn users, we are lessinterested in predicting the non-churn than we are in predicting the churn.
 
@@ -121,11 +91,11 @@ To provide a realistic estimate of the valuation, we must consider the gain in r
 | Fre   | Churn  | 5%  |
 
 Roughly speaking,
-- ```prop_F``` proportion of free users within churn users $= 25\%$
-- ```prop_P``` proportion of paying users within churn users $= 75\%$
-- ```churn_prop``` proportion of churn users within all users $= 22\%$
-- ```nochurn_P_prop``` proportion of non-churn paying users within all users $= 55\%$
-- ```nochurn_P_prop``` proportion of non-churn paying users within all users $= 23\%$
+- ```prop_F``` proportion of free users within churn users = 25\%
+- ```prop_P``` proportion of paying users within churn users = 75\%
+- ```churn_prop``` proportion of churn users within all users = 22\%
+- ```nochurn_P_prop``` proportion of non-churn paying users within all users = 55\%
+- ```nochurn_P_prop``` proportion of non-churn paying users within all users = 23\%
 
 For now, we assume that for every 1 dollar earned from free users (```rev_F```), 3 dollars are earned from paying users (```rev_P```). We take ```rev_F``` as the baseline numeraire for easy comparison.
 
