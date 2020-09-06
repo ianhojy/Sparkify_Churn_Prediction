@@ -100,20 +100,20 @@ Roughly speaking,
 For now, we assume that for every 1 dollar earned from free users (```rev_F```), 3 dollars are earned from paying users (```rev_P```). We take ```rev_F``` as the baseline numeraire for easy comparison.
 
 **Estimates**
-Revenue loss before identification:  250
-Revenue loss after identification:  25
-Revenue loss prevented:  225
-Revenue before identification:  855
-Revenue after identification:  1080
-**Percentage Increase in Revenue after identification:  26 %**
+- Revenue loss before identification:  250
+- Revenue loss after identification:  25
+- Revenue loss prevented:  225
+- Revenue before identification:  855
+- Revenue after identification:  1080
+- **Percentage Increase in Revenue after identification:  26 %**
 
 For our best model, for every 90 true positives identified, there were 33 false negatives, so this would represent additional costs and should be captured in our model as well, depending on how we want to define the cost of targetting potential churn users. This cost will differ according to what kind of strategies we want to use to intervene for retention.
 
 Let us assume for now that targetting costs will be 0.1 of revenue gained from free users.
 
-Cost of Targetting Potential Churn:  12.3
-Revenue after identification AND Targetting Cost:  1067
-**Percentage Increase in Revenue after identification AND Targetting Cost:  25 %**
+- Cost of Targetting Potential Churn:  12.3
+- Revenue after identification AND Targetting Cost:  1067
+- **Percentage Increase in Revenue after identification AND Targetting Cost:  25 %**
 
 To take our valuation estimation further, let us explore how drastically our revenue percentage increases are affected when we change key assumptions about our parameters.
 
