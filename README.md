@@ -138,6 +138,8 @@ The confusion matrices are particularly useful because in our business case, we 
 
 Based on our best performing model, for every  100  customers who will cancel in the future, we can identify  90  of them beforehand.
 
+Admittedly, this is an optimistic estimate of the model performance. However, we will see later that even with more conservative assumptions about model performance, the revenue gains from churn identification are still strong.
+
 To provide a realistic estimate of the valuation, we must consider the gain in revenue in the scope of revenue that is already gained from non-churn users. To do so, we must get an idea of the breakdown of users grouped by paying/free and churn/no-churn.
 
 | Paying / Free | Churn  | Proportion  |
@@ -157,19 +159,19 @@ Roughly speaking,
 For now, we assume that for every 1 dollar earned from free users (```rev_F```), 3 dollars are earned from paying users (```rev_P```). We take ```rev_F``` as the baseline numeraire for easy comparison.
 
 **Estimates**
-- Revenue loss before identification:  250
-- Revenue loss after identification:  25
-- Revenue loss prevented:  225
-- Revenue before identification:  855
-- Revenue after identification:  1080
+- Revenue loss before identification:  $250
+- Revenue loss after identification:  $25
+- Revenue loss prevented:  $225
+- Revenue before identification:  $855
+- Revenue after identification:  $1080
 - **Percentage Increase in Revenue after identification:  26 %**
 
 For our best model, for every 90 true positives identified, there were 33 false negatives, so this would represent additional costs and should be captured in our model as well, depending on how we want to define the cost of targetting potential churn users. This cost will differ according to what kind of strategies we want to use to intervene for retention.
 
 Let us assume for now that targetting costs will be 0.1 of revenue gained from free users.
 
-- Cost of Targetting Potential Churn:  12.3
-- Revenue after identification AND Targetting Cost:  1067
+- Cost of Targetting Potential Churn:  $12.3
+- Revenue after identification AND Targetting Cost:  $1067
 - **Percentage Increase in Revenue after identification AND Targetting Cost:  25 %**
 
 To take our valuation estimation further, let us explore how drastically our revenue percentage increases are affected when we change key assumptions about our parameters.
@@ -179,3 +181,5 @@ In particular, let's take a look at what happens when we change our ```identific
 ![](./Figures/Identification_Sensitivity.png)
 
 From above, we see that even if our model does not hit the 90% identification rate that we claim it does there are still significant gains to be made even for lower identification rates. The revenue-drive case for identifying churn users is clear.
+
+I also conducted a sensitivity analysis to see how the relative revenues from paid and free users affect the total revenue streams. It turns out that due to the nature of class imbalance, that is not a very influencial factor for revenue increases.
