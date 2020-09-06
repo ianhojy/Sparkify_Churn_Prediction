@@ -30,15 +30,72 @@ For this project, we will define **churn** as when a user cancels the service. I
 
 Churn is a problem for Sparkify as it represents revenue lost from subscribers who leave the platform. There is revenue lost from subscribers who previously paid for the subscription. There is also revenue lost from free subscribers since there is less to be made through others revenue streams such as advertisement.
 
-Thus, the challenge is to identify these potential churn users before they actually cancel their subscription, and to employ appropriate countermeasure to prevent churn.
+### Business Objective
+
+Thus, the challenge is to identify these potential churn users before they actually cancel their subscription, so that we might employ appropriate countermeasure to prevent churn.
 
 ## 2. Approach <a id="approach">
 
 ### Data Exploration <a id="explore">
 
+For more information on the decision process behind preprocessing and variable selection, refer to [Sparkify_Churn_Prediction.ipynb](Sparkify_Churn_Prediction.ipynb). There are significant number of missing values in the dataset for multiple columns. However, these have been identified to be systematic, so dropping missing ```userId``` would fix many of the associated problems.
+
+Below are some overview findings for the dataset.
+
+- 543705 Rows (Actions)
+- 449 Distinct users, of which 99 are Churn
+
+![](Figures/Churn_Level_Count.png)
+![](Figures/Churn_Time.png)
+![](Figures/Level_Time.png)
+![](Figures/NotChurn_Hourly.png)
+![](Figures/Churn_Hourly.png)
+
 ### Feature Engineering <a id="feature">
 
+For our final dataset, we want each row to correspond to a single user. The raw dataset is a log of past usage, so we will need to conduct feature engineering in order to obtain user-specific single-values which can be used for modelling.
+
+We introduce the following variables to be included:
+- Gender (binary)
+- Paid (binary)
+- Daily Number of Sessions (continuous)
+- Monthly Number of Sessions (continuous)
+- Daily Number of Songs (continuous)
+- Monthly Number of Songs (continuous)
+- Days since Registration (continuous)
+- Number of Artists (continuous)
+- Number of Friends (continuous)
+- Number of Thumbsdown (continuous) (continuous)
+- Number of Thumbsup (continuous)
+- Number of songs added to Playlist (continuous)
+- Average Session time (continuous)
+- Number of upgrades (continuous)
+- Number of downgrades (continuous)
+
 ### Modelling <a id="model">
+
+I will be using 3-fold CV to choose the best parameters for each model. The reason for using CV is because of the relative small number of data points. This will be executed by ```train_model```. Subsequently, ```eval_model``` will provide preliminary evaluation metrics for each model. Finally ```plot_feature_importance``` will load the best saved model and display the ranks of feature importance for each model.
+
+We will be looking at four machine learning algorithms with the following hyperparameter configurations:
+- <u>Logistic Regression</u>
+    - ElasticNet Parameter : (0, 0.1, 0.5, 1.0)
+    - Regularization Parameter : (0, 0.05, 0.1)
+
+
+- <u>Decision Tree Classifier</u>
+    - Impurity : (Entropy, Gini)
+    - Max Depth : (2, 4, 6, 8)
+
+
+- <u>Gradient Boosted Tree Classifier</u>
+    - Max Iterations : (10, 20, 30)
+    - Max Bins : (20, 40, 60)
+    - Max Depth : (2, 4, 6, 8, 10)
+
+
+- <u>Random Forest Classifier</u>
+    - Impurity :  (Entropy, Gini)
+    - Max Depth : (2, 4, 6, 8)
 
 ## 3. Results <a id="result">
 
