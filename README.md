@@ -2,6 +2,7 @@
 
 The following provides a quick overview of the methodologies and results obtained from the churn prediction. For the full code, results and explanation of methodologies, refer to [Sparkify_Churn_Prediction.ipynb](Sparkify_Churn_Prediction.ipynb)
 
+For a quick presentation on the process and value proposition of this project, take a look at this [presentation!](Presentation.pdf)
 
 ## Table of Contents
 * [1. Business Problem](#problem)
