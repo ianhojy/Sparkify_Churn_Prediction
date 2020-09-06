@@ -135,6 +135,34 @@ The confusion matrices are as follows:
 
 The confusion matrices are particularly useful because in our business case, we are not merely interested in accuracy, but we are more concerned about identifying churn users, while perhaps also taking into account factors such as retention costs, which we will be explore below.
 
+#### Feature importance
+
+Finally, we take a look at feature importance to figure out which variables are particularly relevant for predicting churn in each model. Feature importance will be particularly interesting as it might inform directions for A/B testing to figure out alternative approaches to encourage customer retention.
+
+The feature importances are illustrated as follows:
+![](Figures/Importance_LogisticRegression.png)
+![](Figures/Importance_DecisionTreeClassifier.png)
+![](Figures/Importance_GBTClassifier.png)
+![](Figures/Importance_RandomForestClassifier.png)
+
+Let's take a closer look at the top 5 features for each model:
+
+
+| Model | Feature 1 | Feature 2 | Feature 3 | Feature 4 | Feature 5 |
+| :-: | :-: | :-: | :-: | :-: | :-: |
+| Logistic | No. of Monthly Songs | No. of Downgrades | No. of Monthly Sessions | No. of Thumbs Down  | Average Session Time |
+| Decision Tree | No. of Monthly Songs  | No. of Thumbs Up | No. of Daily Songs | No. of Daily Sessions | Days since Registration |
+| Gradient-Boosted Tree | Days since Registration | No. of Monthly Songs  | No. of Thumbs Up |  No. of Daily Songs | Number of Friends |
+| Random Forest | No. of Thumbs Up | No. of Monthly Songs | No. of Daily Songs | Days since Registration  | Average Session Time |
+
+
+From the feature importance rankings above, we see that there are certain features that consistently show up as important, such as Daily/Monthly number of Songs, No. of Thumbs Up/Down. This result does not seem extremely surprisingly given that, intuitively, we might expect users who use Sparkify frequently are less expected to churn. The causal mechanisms would probably be one of the following.
+
+* (1) Users who have more activity on Sparkify have more utility through usage and therefore have higher probability of retention
+* (2) Users who have higher probability of retention (due perhaps to some unobservable or undiscovered user or app attribute), naturally have more activity on Sparkify
+
+Further work can be done to explore the effects of these features on churn retention. For instance, Sparkify might consider personalized action that tries to use **recommendation systems** to recommend more songs to users who have been identified as having higher churn probability. If these users are suddenly exposed to many appropriate songs, their usage might increase and this might in turn decrease the probability of cancellation.
+
 ## 4. Value Proposition <a id="value">
 
 Based on our best performing model, for every  100  customers who will cancel in the future, we can identify  90  of them beforehand.
